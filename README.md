@@ -1,50 +1,135 @@
-# React + TypeScript + Vite
+# My Chat Bot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a chat bot application built with React, TypeScript, and Vite. It uses OpenAI's API to generate responses based on user prompts.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+.env
+.env.example
+.gitignore
+eslint.config.js
+index.html
+package.json
+public/
+README.md
+src/
+    hooks/
+        use-chat.ts
+    index.css
+    interfaces/
+        ai-response.d.ts
+    main.tsx
+    pages/
+        chat-page.tsx
+    services/
+        ai-service.ts
+    vite-env.d.ts
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Prerequisites
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/AdrianYuu/my-chat-bot.git
+   cd my-chat-bot
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Copy the `.env.example` file to `.env` and fill in your OpenAI API key and base URL:
+
+   ```sh
+   cp .env.example .env
+   ```
+
+   ```env
+   VITE_OPENROUTER_API_KEY=your-api-key
+   VITE_OPENROUTER_BASE_URL=your-base-url
+   ```
+
+### Running the Development Server
+
+To start the development server, run:
+
+```sh
+npm run dev
+# or
+yarn dev
 ```
+
+This will start the Vite development server and you can view the application at `http://localhost:5173`.
+
+### Building for Production
+
+To build the project for production, run:
+
+```sh
+npm run build
+# or
+yarn build
+```
+
+The production-ready files will be in the `dist` directory.
+
+### Linting
+
+To lint the project, run:
+
+```sh
+npm run lint
+# or
+yarn lint
+```
+
+### Previewing the Production Build
+
+To preview the production build, run:
+
+```sh
+npm run preview
+# or
+yarn preview
+```
+
+## Project Details
+
+### Hooks
+
+- `useChat` ([src/hooks/use-chat.ts](src/hooks/use-chat.ts)): Custom hook to handle chat functionality.
+
+### Services
+
+- `getAIResponse` ([src/services/ai-service.ts](src/services/ai-service.ts)): Function to fetch AI response from the OpenAI API.
+
+### Pages
+
+- `ChatPage` ([src/pages/chat-page.tsx](src/pages/chat-page.tsx)): Main chat page component.
+
+### Interfaces
+
+- `AIResponse` ([src/interfaces/ai-response.d.ts](src/interfaces/ai-response.d.ts)): TypeScript interface for AI response.
+
+### Configuration
+
+- ESLint configuration: [eslint.config.js](eslint.config.js)
+- TypeScript configuration: [tsconfig.json](tsconfig.json), [tsconfig.app.json](tsconfig.app.json), [tsconfig.node.json](tsconfig.node.json)
+- Vite configuration: [vite.config.ts](vite.config.ts)
